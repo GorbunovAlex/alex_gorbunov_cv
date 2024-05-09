@@ -4,7 +4,7 @@ from .models.articles import Article
 
 class ArticleModel:
     def __init__(self):
-        self.db: Session = Database().session
+        self.db: Session = Database().session()
 
 
     def get_articles(self):

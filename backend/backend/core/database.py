@@ -19,8 +19,8 @@ class DatabaseMeta(type):
 class Database(metaclass=DatabaseMeta):
     def __init__(self):
         self.config = Config()
-        SQLALCHEMY_DATABASE_URL = f"postgresql://{self.config.get_config('Database', 'db_user')}:{self.config.get_config('Database', 'db_password')}@{self.config.get_config('Database', 'host')}:{self.config.get_config('Database', 'port')}/{self.config.get_config('Database', 'db_name')}"
+        SQLALCHEMY_DATABASE_URL = f"postgresql://{self.config.get_config('Database', 'db_user')}:{self.config.get_config('Database', 'db_pass')}@{self.config.get_config('Database', 'host')}:{self.config.get_config('Database', 'port')}/{self.config.get_config('Database', 'db_name')}"
         engine = create_engine(
-            SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
+            SQLALCHEMY_DATABASE_URL
         )
         self.session = sessionmaker(autocommit=False, autoflush=False, bind=engine)

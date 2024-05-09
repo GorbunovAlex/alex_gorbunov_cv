@@ -2,6 +2,10 @@ from fastapi import FastAPI
 
 from backend.views.articles import ArticlesView
 
-app = FastAPI()
+def init_app():
+    app = FastAPI()
+    app.include_router(ArticlesView().router)
+    return app
 
-ArticlesView()
+
+app = init_app()

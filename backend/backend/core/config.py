@@ -14,8 +14,7 @@ class ConfigMeta(type):
 class Config(metaclass=ConfigMeta):
     def __init__(self):
          self.config = configparser.ConfigParser()
-         self.file = open(CONFIG_PATH)
-         self.config = self.config.read_file(self.file)
 
     def get_config(self, section, option):
+        self.config.read(CONFIG_PATH)
         return self.config.get(section, option)
