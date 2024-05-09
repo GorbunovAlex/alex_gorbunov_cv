@@ -15,6 +15,7 @@ sqlalchemy = "^2.0.30"
 cython = "^3.0.10"
 build = "^1.2.1"
 configparser = "^7.0.0"
+psycopg2-binary = "^2.9.9"
 
 
 [build-system]

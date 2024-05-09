@@ -1,4 +1,5 @@
-config/*
+backend/core/config/*
 
 # NOT IGNORED
-!config/database_example.ini
+!backend/core/config/config_example.ini
+!backend/core/config/config.py
