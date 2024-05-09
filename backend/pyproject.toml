@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Alexander Gorbunov <algor.monte@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.111.0"
+pymongo = "^4.7.2"
+pydantic = "^2.7.1"
+alembic = "^1.13.1"
+sqlalchemy = "^2.0.30"
+cython = "^3.0.10"
+build = "^1.2.1"
+configparser = "^7.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

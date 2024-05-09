@@ -1,0 +1,4 @@
+config/*
+
+# NOT IGNORED
+!config/database_example.ini
