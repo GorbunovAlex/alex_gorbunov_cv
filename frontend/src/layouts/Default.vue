@@ -2,13 +2,18 @@
 import { useRoute } from 'vue-router';
 
 import Linkedin from '@/assets/icons/Linkedin.vue';
+import Telegram from '@/assets/icons/Telegram.vue';
 import Github from '@/assets/icons/Github.vue';
 
 const route = useRoute();
+
+function navigateToSite(link: string) {
+  window.open(link, '_blank');
+}
 </script>
 
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpR fFf">
     <q-header class="header">
       <q-toolbar class="header__toolbar row items-center justify-between">
         <div class="row items-center gap-8">
@@ -27,15 +32,27 @@ const route = useRoute();
           />
         </div>
         <div class="row item-center gap-8">
-          <Linkedin class="icon" />
-          <Github class="icon" />
+          <Linkedin
+            class="icon"
+            @click="navigateToSite('https://www.linkedin.com/in/gorbunovalex/')"
+          />
+          <Github class="icon" @click="navigateToSite('https://github.com/GorbunovAlex')" />
+          <Telegram class="icon" />
         </div>
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container class="q-pa-md">
       <router-view />
     </q-page-container>
+
+    <q-footer class="bg-transparent text-primary">
+      <q-toolbar>
+        <q-toolbar-title>
+          <p>&copy; 2024 Alex Gorbunov. All rights coded.</p>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -52,7 +69,7 @@ body {
 
   &__toolbar {
     width: 400px;
-    background: $normal-header;
+    background: $primary;
     border-radius: 5px;
   }
 
