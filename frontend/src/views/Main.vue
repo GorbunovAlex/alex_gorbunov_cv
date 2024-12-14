@@ -8,7 +8,7 @@ import Langs from '@/assets/icons/Langs.vue';
     <p>Welcome to my personal space where I share my development thoughts and showcase my work.</p>
     <Langs class="main__langs" />
     <p>
-      I'm <span class="text-primary">Alex Gorbunov </span>, a software developer with 5 years of
+      I'm <span class="text-primary">Alex Gorbunov </span>, a software developer with 6 years of
       experience in <span class="text-primary">JavaScript and TypeScript</span>, focusing on the Vue
       ecosystem.
     </p>
