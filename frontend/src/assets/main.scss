@@ -40,10 +40,14 @@ body {
 }
 
 .icon {
-  width: 20px;
-  height: 20px;
-  fill: white;
+  width: 30px;
+  height: 30px;
+  fill: $main-text;
   cursor: pointer;
+}
+
+.main-color-text {
+  color: $main-text;
 }
 
 .icon:hover {

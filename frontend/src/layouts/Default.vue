@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
 
-import Linkedin from '@/assets/icons/Linkedin.vue';
-import Telegram from '@/assets/icons/Telegram.vue';
-import Github from '@/assets/icons/Github.vue';
+import Linkedin from '@/components/icons/Linkedin.vue';
+import Telegram from '@/components/icons/Telegram.vue';
+import Github from '@/components/icons/Github.vue';
+import dayjs from 'dayjs';
 
 const route = useRoute();
 
@@ -13,32 +14,25 @@ function navigateToSite(link: string) {
 </script>
 
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="hHh lpR fFf" class="app-layout">
     <q-header class="header">
       <q-toolbar class="header__toolbar row items-center justify-between">
-        <div class="row items-center gap-8">
-          <q-btn flat label="Main" to="/main" :class="{ header__active: route.path === '/main' }" />
-          <q-btn
-            flat
-            label="About"
-            to="/main/about"
-            :class="{ header__active: route.path === '/main/about' }"
-          />
-          <q-btn
-            flat
-            label="Blog"
-            to="/main/blog"
-            :class="{ header__active: route.path === '/main/blog' }"
-          />
-        </div>
-        <div class="row item-center gap-8">
-          <Linkedin
-            class="icon"
-            @click="navigateToSite('https://www.linkedin.com/in/gorbunovalex/')"
-          />
-          <Github class="icon" @click="navigateToSite('https://github.com/GorbunovAlex')" />
-          <Telegram class="icon" />
-        </div>
+        <q-btn flat label="Main" to="/main" :class="{ header__active: route.path === '/main' }" />
+        <q-btn
+          flat
+          disable
+          label="About"
+          to="/main/about"
+          :class="{ header__active: route.path === '/main/about' }"
+        />
+        <q-btn
+          flat
+          disable
+          label="Blog"
+          to="/main/blog"
+          :class="{ header__active: route.path === '/main/blog' }"
+        />
+
       </q-toolbar>
     </q-header>
 
@@ -47,42 +41,45 @@ function navigateToSite(link: string) {
     </q-page-container>
 
     <q-footer class="bg-transparent text-primary">
-      <q-toolbar>
-        <q-toolbar-title>
-          <p>&copy; 2024 Alex Gorbunov. All rights coded.</p>
-        </q-toolbar-title>
+      <q-toolbar class="flex column gap-4">
+        <div class="row item-center gap-8">
+          <Linkedin
+            class="icon"
+            @click="navigateToSite('https://www.linkedin.com/in/gorbunovalex/')"
+          />
+          <Github class="icon" @click="navigateToSite('https://github.com/GorbunovAlex')" />
+        </div>
+        <p class="main-color-text text-caption">&copy; {{ dayjs().format('YYYY') }} Alex Gorbunov. All rights coded.</p>
       </q-toolbar>
     </q-footer>
   </q-layout>
 </template>
 
 <style lang="scss">
-body {
+.app-layout {
   color: white;
 }
 
 .header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   background: transparent;
   padding: 10px;
 
   &__toolbar {
-    width: 400px;
-    background: $primary;
-    border-radius: 5px;
+    width: 300px;
+    color: $main-text
   }
 
   &__active {
     text-shadow:
       0 0 5px #fff,
       0 0 10px #fff,
-      0 0 15px #fff,
-      0 0 20px #0fa,
-      0 0 30px #0fa,
-      0 0 40px #0fa,
-      0 0 55px #0fa,
-      0 0 75px #0fa;
+      0 0 15px rgba(48, 209, 19, 0.29),
+      0 0 20px rgba(48, 209, 19, 0.39),
+      0 0 30px rgba(48, 209, 19, 0.58),
+      0 0 40px rgba(48, 209, 19, 0.79),
+      0 0 50px #30d113;
   }
 }
 </style>
