@@ -1,5 +1,0 @@
-backend/core/config/*
-
-# NOT IGNORED
-!backend/core/config/config_example.ini
-!backend/core/config/config.py

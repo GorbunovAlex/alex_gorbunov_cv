@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { useRoute } from 'vue-router';
+import dayjs from 'dayjs';
 
 import Linkedin from '@/components/icons/Linkedin.vue';
-import Telegram from '@/components/icons/Telegram.vue';
 import Github from '@/components/icons/Github.vue';
-import dayjs from 'dayjs';
 
 const route = useRoute();
 
@@ -20,7 +19,6 @@ function navigateToSite(link: string) {
         <q-btn flat label="Main" to="/main" :class="{ header__active: route.path === '/main' }" />
         <q-btn
           flat
-          disable
           label="About"
           to="/main/about"
           :class="{ header__active: route.path === '/main/about' }"
@@ -37,10 +35,10 @@ function navigateToSite(link: string) {
     </q-header>
 
     <q-page-container class="q-pa-md">
-      <router-view />
+      <router-view class="page" />
     </q-page-container>
 
-    <q-footer class="bg-transparent text-primary">
+    <q-footer class="bg-transparent">
       <q-toolbar class="flex column gap-4">
         <div class="row item-center gap-8">
           <Linkedin
@@ -58,13 +56,13 @@ function navigateToSite(link: string) {
 <style lang="scss">
 .app-layout {
   color: white;
+  max-width: 100dvw;
 }
 
 .header {
   display: flex;
   justify-content: center;
   background: transparent;
-  padding: 10px;
 
   &__toolbar {
     width: 300px;
@@ -81,5 +79,10 @@ function navigateToSite(link: string) {
       0 0 40px rgba(48, 209, 19, 0.79),
       0 0 50px #30d113;
   }
+}
+
+.page {
+  height: calc(100dvh - 120px);
+  overflow: auto;
 }
 </style>
