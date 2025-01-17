@@ -2,6 +2,7 @@ package main
 
 import (
 	"gorbunov_alex.space/cv/internal/config"
+	"gorbunov_alex.space/cv/internal/lib/logger/sl"
 	"log/slog"
 	"net/http"
 	"os"
@@ -33,7 +34,6 @@ func main() {
 
 	log.Info("starting server", slog.String("env", cfg.Env))
 
-	storage, err := postgres.NewStorage()
 	if err != nil {
 		log.Error("failed to init storage", sl.Error(err))
 		os.Exit(1)
