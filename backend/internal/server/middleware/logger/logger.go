@@ -3,6 +3,8 @@ package logger
 import (
 	"log/slog"
 	"time"
+
+	"github.com/gin-gonic/gin"
 )
 
 func New(log *slog.Logger) gin.HandlerFunc {

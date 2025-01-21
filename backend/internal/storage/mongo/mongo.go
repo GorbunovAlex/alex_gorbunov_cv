@@ -2,26 +2,32 @@ package mongo
 
 import (
 	"context"
-	"log"
-
+	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
 
-var collection *mongo.Collection
 var ctx = context.TODO()
 
-func init() {
+type Storage struct {
+	db *mongo.Database
+}
+
+func NewStorage() (*Storage, error) {
+	const fn = "storage.mongo.NewStorage"
+
 	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017/")
 	client, err := mongo.Connect(ctx, clientOptions)
 	if err != nil {
-		log.Fatal(err)
+		return nil, fmt.Errorf("%s: %w", fn, err)
 	}
 
 	err = client.Ping(ctx, nil)
 	if err != nil {
-		log.Fatal(err)
+		return nil, fmt.Errorf("%s: %w", fn, err)
 	}
 
-	collection = client.Database("tasker").Collection("tasks")
+	db := client.Database("cv")
+
+	return &Storage{db: db}, nil
 }

@@ -3,6 +3,9 @@ package main
 import (
 	"gorbunov_alex.space/cv/internal/config"
 	"gorbunov_alex.space/cv/internal/lib/logger/sl"
+	"gorbunov_alex.space/cv/internal/server/router"
+	"gorbunov_alex.space/cv/internal/storage/mongo"
+
 	"log/slog"
 	"net/http"
 	"os"
@@ -34,6 +37,8 @@ func main() {
 
 	log.Info("starting server", slog.String("env", cfg.Env))
 
+	storage, err := mongo.NewStorage()
+
 	if err != nil {
 		log.Error("failed to init storage", sl.Error(err))
 		os.Exit(1)
@@ -49,17 +54,7 @@ func main() {
 		IdleTimeout:  cfg.HTTPServer.IdleTimeout,
 	}
 
-	c := cron.New()
-
-	go func() {
-		c.AddFunc("@every 1h", func() {
-			crons.DeleteOutdatedSessions(storage, log)
-		})
-		c.Start()
-	}()
-
 	if err := srv.ListenAndServe(); err != nil {
-		c.Stop()
 		log.Error("server stopped", sl.Error(err))
 	}
 }
