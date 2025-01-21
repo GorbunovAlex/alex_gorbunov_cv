@@ -1,7 +1,7 @@
 package router
 
 import (
-	"go.mongodb.org/mongo-driver/mongo"
+	"gorbunov_alex.space/cv/internal/storage/mongo"
 	//_ "gorbunov_alex.space/cv/docs"
 	mLogger "gorbunov_alex.space/cv/internal/server/middleware/logger"
 	"log/slog"
@@ -13,7 +13,7 @@ import (
 	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
-func Router(log *slog.Logger, storage *mongo.Database) http.Handler {
+func Router(log *slog.Logger, storage *mongo.Storage) http.Handler {
 	router := gin.Default()
 
 	router.Use(mLogger.New(log))

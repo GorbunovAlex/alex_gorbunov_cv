@@ -30,7 +30,7 @@ import (
 // @externalDocs.description  OpenAPI
 // @externalDocs.url          https://swagger.io/resources/open-api/
 func main() {
-	// TODO: Move to global? 3 invokations in app
+	// TODO: Move to global? 3 invocations in the app
 	cfg := config.MustLoad()
 
 	log := sl.SetupLogger(cfg.Env)
@@ -38,7 +38,6 @@ func main() {
 	log.Info("starting server", slog.String("env", cfg.Env))
 
 	storage, err := mongo.NewStorage()
-
 	if err != nil {
 		log.Error("failed to init storage", sl.Error(err))
 		os.Exit(1)
