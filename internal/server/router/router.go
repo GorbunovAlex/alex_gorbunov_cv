@@ -1,7 +1,7 @@
 package router
 
 import (
-	templates "alex_gorbunov_cv/templates"
+	templates "alex_gorbunov_cv/web/templates"
 	"log/slog"
 	"net/http"
 
@@ -20,6 +20,7 @@ func Router(log *slog.Logger) http.Handler {
 	main_page_component := templates.MainPageComponent()
 
 	router.Handle("/", templ.Handler(main_page_component))
+	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
 	return router
 }
