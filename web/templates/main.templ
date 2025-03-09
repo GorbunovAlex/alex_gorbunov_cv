@@ -1,0 +1,351 @@
+package templates
+
+import "alex_gorbunov_cv/web/templates/components"
+
+templ MainPageComponent() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Gorbunov | Software Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00e8ff;
+            --secondary-color: #0084ff;
+            --accent-color: #ffff00;
+            --light-bg: #1a2233;
+            --dark-bg: #0a121f;
+            --text-light: #ffffff;
+            --text-dark: #0a121f;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 22px;
+            color: var(--text-light);
+            background-color: var(--dark-bg);
+            overflow-x: hidden;
+        }
+
+        .hero-icon {
+          heigh: 16px;
+          width: 16px;
+        }
+        
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(135deg, #0a121f 0%, #1a2233 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .binary-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/static/binary_bg.webp');
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            z-index: 2;
+            position: relative;
+        }
+        
+        .hero-image {
+            max-width: 380px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-color);
+            box-shadow: 0 0 30px rgba(0, 232, 255, 0.3);
+            position: relative;
+            z-index: 5;
+        }
+        
+        .tech-pill {
+            background-color: var(--light-bg);
+            border-radius: 30px;
+            padding: 8px 16px;
+            margin: 5px;
+            box-shadow: 0 0 15px rgba(0, 232, 255, 0.2);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 232, 255, 0.3);
+            color: var(--primary-color);
+        }
+        
+        .tech-pill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px rgba(0, 232, 255, 0.4);
+            background-color: rgba(0, 232, 255, 0.1);
+        }
+        
+        .section-heading {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--text-light);
+        }
+        
+        .section-heading::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100px;
+            height: 3px;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 232, 255, 0.5);
+        }
+        
+        .project-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 232, 255, 0.2);
+            transition: all 0.3s ease;
+            background-color: var(--light-bg);
+            border: 1px solid rgba(0, 232, 255, 0.2);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px rgba(0, 232, 255, 0.4);
+        }
+        
+        .contact-info i {
+            width: 30px;
+            color: var(--primary-color);
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--light-bg);
+            color: var(--primary-color);
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 232, 255, 0.3);
+        }
+        
+        .social-links a:hover {
+            background-color: rgba(0, 232, 255, 0.1);
+            color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(0, 232, 255, 0.4);
+        }
+        
+        #skills .progress {
+            height: 10px;
+            border-radius: 10px;
+            background-color: var(--dark-bg);
+        }
+        
+        section {
+            position: relative;
+        }
+        
+        section.bg-dark {
+            background-color: var(--dark-bg);
+        }
+        
+        section.bg-light {
+            background-color: var(--light-bg) !important;
+        }
+        
+        footer {
+            background-color: var(--dark-bg);
+            border-top: 1px solid rgba(0, 232, 255, 0.2);
+        }
+
+        /* Override Bootstrap's primary color */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: var(--text-dark);
+            box-shadow: 0 0 15px rgba(0, 232, 255, 0.3);
+        }
+        
+        .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+            background-color: #00c8db;
+            border-color: #00c8db;
+            box-shadow: 0 0 20px rgba(0, 232, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            background-color: transparent;
+        }
+        
+        .btn-outline-primary:hover, .btn-outline-primary:focus, .btn-outline-primary:active {
+            background-color: rgba(0, 232, 255, 0.1);
+            border-color: var(--primary-color);
+            color: var(--text-light);
+            box-shadow: 0 0 15px rgba(0, 232, 255, 0.3);
+        }
+        
+        .btn-outline-dark {
+            color: var(--text-light);
+            border-color: var(--text-light);
+            background-color: transparent;
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .text-primary {
+            color: var(--primary-color) !important;
+        }
+        
+        .bg-primary {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(0, 232, 255, 0.5);
+        }
+        
+        .navbar {
+            background-color: rgba(10, 18, 31, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 232, 255, 0.2);
+        }
+        
+        .navbar-light .navbar-brand,
+        .navbar-light .navbar-nav .nav-link {
+            color: var(--text-light);
+        }
+        
+        .navbar-light .navbar-nav .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .card {
+            background-color: var(--light-bg);
+            border: 1px solid rgba(0, 232, 255, 0.2);
+            color: var(--text-light);
+        }
+        
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 232, 255, 0.2);
+            color: var(--text-light);
+        }
+        
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary-color);
+            color: var(--text-light);
+            box-shadow: 0 0 0 0.25rem rgba(0, 232, 255, 0.25);
+        }
+        
+        .form-label {
+            color: var(--text-light);
+        }
+        
+        .tech-icon {
+            font-size: 2.5rem;
+            margin: 0 10px;
+            color: var(--primary-color);
+            text-shadow: 0 0 10px rgba(0, 232, 255, 0.5);
+        }
+        
+        .badge {
+            background-color: rgba(0, 232, 255, 0.2);
+            color: var(--primary-color);
+        }
+        
+        .binary-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('/static/binary_bg.webp');
+            background-size: cover;
+            opacity: 0.05;
+            z-index: 0;
+        }
+        
+        .tech-logo-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tech-logo {
+            width: 50px;
+            height: 50px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .tech-logo:hover {
+            transform: translateY(-5px);
+            filter: drop-shadow(0 0 10px rgba(0, 232, 255, 0.5));
+        }
+        
+        .glow-text {
+            text-shadow: 0 0 10px rgba(0, 232, 255, 0.5);
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    @components.NavigationComponent()
+
+    <!-- Hero Section -->
+    @components.HeroComponent()
+
+    <!-- About Section -->
+    @components.AboutComponent()
+
+    <!-- Skills Section -->
+    @components.SkillsComponent()
+
+    <!-- Projects Section -->
+    @components.ProjectsComponent()
+
+    <!-- Experience Section -->
+    @components.ExperienceComponent()
+
+    <!-- Contact Section -->
+    @components.ContactComponent()
+
+    <!-- Footer -->
+    <footer class="py-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2025 Alex Gorbunov. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+  }
