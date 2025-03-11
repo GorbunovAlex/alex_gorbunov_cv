@@ -1,6 +1,7 @@
 package router
 
 import (
+	store "alex_gorbunov_cv/internal/storage"
 	templates "alex_gorbunov_cv/web/templates"
 	"log/slog"
 	"net/http"
@@ -10,7 +11,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func Router(log *slog.Logger) http.Handler {
+func Router(log *slog.Logger, storage store.Storage) http.Handler {
 	router := mux.NewRouter()
 
 	// router.Use(mLogger.New(log))
@@ -18,7 +19,6 @@ func Router(log *slog.Logger) http.Handler {
 	router.Use(handlers.RecoveryHandler())
 
 	main_page_component := templates.MainPageComponent()
-
 	router.Handle("/", templ.Handler(main_page_component))
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 

@@ -5,6 +5,7 @@ http_server:
   idle_timeout: 60s
 database:
   client_uri: "mongodb://localhost:27017/"
-  name: "alexcv"
+  database: "alex_cv"
+  collection: "cv_collection"
   user: root
   password: root
