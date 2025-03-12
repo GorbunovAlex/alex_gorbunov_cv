@@ -29,6 +29,12 @@ func NewStorage() (*Storage, error) {
 		return nil, fmt.Errorf("%s: %w", fn, err)
 	}
 
+	defer func() {
+		if err = client.Disconnect(ctx); err != nil {
+			panic(err)
+		}
+	}()
+
 	err = client.Ping(ctx, nil)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", fn, err)

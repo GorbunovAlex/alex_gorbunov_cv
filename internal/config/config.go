@@ -22,7 +22,7 @@ type HTTPServer struct {
 
 type Database struct {
 	ClientURI  string `yaml:"client_uri" env-required:"true"`
-	Database   string `yaml:"name" env-required:"true"`
+	Database   string `yaml:"database" env-required:"true"`
 	Collection string `yaml:"collection" env-required:"true"`
 	User       string `yaml:"user" env-required:"true"`
 	Password   string `yaml:"password" env-required:"true"`
