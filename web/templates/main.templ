@@ -1,8 +1,11 @@
 package templates
 
-import "alex_gorbunov_cv/web/templates/components"
+import (
+  "alex_gorbunov_cv/web/templates/components"
+  models "alex_gorbunov_cv/internal/models"
+)
 
-templ MainPageComponent() {
+templ MainPageComponent(experiences []*models.Experience, projects []*models.Project) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -328,11 +331,15 @@ templ MainPageComponent() {
     <!-- Skills Section -->
     @components.SkillsComponent()
 
-    <!-- Projects Section -->
-    @components.ProjectsComponent()
+    if projects != nil {
+       <!-- Projects Section -->
+       @components.ProjectsComponent(projects)
+    }
 
-    <!-- Experience Section -->
-    @components.ExperienceComponent()
+    if experiences != nil {
+      <!-- Experience Section -->
+      @components.ExperienceComponent() 
+    }
 
     <!-- Contact Section -->
     @components.ContactComponent()

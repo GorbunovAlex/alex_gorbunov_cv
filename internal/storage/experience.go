@@ -7,7 +7,7 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 )
 
-func GetExperices(storage *Storage) ([]*models.Experience, error) {
+func (storage *Storage) GetExperices() ([]*models.Experience, error) {
 	const fn = "storage.GetExperices"
 
 	var experiences []*models.Experience

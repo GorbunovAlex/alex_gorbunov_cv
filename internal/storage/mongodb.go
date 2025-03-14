@@ -23,24 +23,23 @@ func NewStorage() (*Storage, error) {
 
 	cfg := config.MustLoad()
 
-	client_options := options.Client().ApplyURI(cfg.Database.ClientURI)
+	credentianls := options.Credential{
+		Username: cfg.User,
+		Password: cfg.Password,
+	}
+
+	client_options := options.Client().ApplyURI(cfg.Database.ClientURI).SetAuth(credentianls)
 	client, err := mongo.Connect(ctx, client_options)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", fn, err)
 	}
-
-	defer func() {
-		if err = client.Disconnect(ctx); err != nil {
-			panic(err)
-		}
-	}()
 
 	err = client.Ping(ctx, nil)
 	if err != nil {
 		return nil, fmt.Errorf("%s: %w", fn, err)
 	}
 
-	collection = client.Database(cfg.Database.Database).Collection(cfg.Database.Collection)
+	collection = client.Database(cfg.Database.Database).Collection(cfg.Collection)
 
 	return &Storage{collection: collection}, nil
 }

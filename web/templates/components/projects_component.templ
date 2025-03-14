@@ -1,72 +1,165 @@
 package components
 
-templ ProjectsComponent() {
-<section class="py-5 py-md-7 bg-light" id="projects">
-        <div class="binary-bg"></div>
-        <div class="container">
-            <h2 class="section-heading text-center">Featured Projects</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center mb-5">
-                    <p class="lead">Showcasing some of my best work across different domains</p>
-                </div>
-            </div>
-            
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="card project-card h-100 border-0">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 1">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">AI-Powered Task Manager</h5>
-                            <p class="card-text">A Vue.js web application with LLM integration for smart task categorization and prioritization.</p>
-                            <div class="d-flex flex-wrap mt-3 mb-3">
-                                <span class="badge me-2 mb-2">Vue.js</span>
-                                <span class="badge me-2 mb-2">TypeScript</span>
-                                <span class="badge me-2 mb-2">Python</span>
-                                <span class="badge me-2 mb-2">LLM</span>
-                            </div>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="card project-card h-100 border-0">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 2">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Cross-Platform Mobile Wallet</h5>
-                            <p class="card-text">A Flutter-based mobile application for secure financial transactions with biometric authentication.</p>
-                            <div class="d-flex flex-wrap mt-3 mb-3">
-                                <span class="badge me-2 mb-2">Flutter</span>
-                                <span class="badge me-2 mb-2">Dart</span>
-                                <span class="badge me-2 mb-2">Go</span>
-                                <span class="badge me-2 mb-2">Firebase</span>
-                            </div>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-6 col-lg-4">
-                    <div class="card project-card h-100 border-0">
-                        <img src="/api/placeholder/400/300" class="card-img-top" alt="Project 3">
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Microservices API Platform</h5>
-                            <p class="card-text">A scalable backend infrastructure built with Go, supporting high-throughput data processing.</p>
-                            <div class="d-flex flex-wrap mt-3 mb-3">
-                                <span class="badge me-2 mb-2">Go</span>
-                                <span class="badge me-2 mb-2">Docker</span>
-                                <span class="badge me-2 mb-2">Kubernetes</span>
-                                <span class="badge me-2 mb-2">PostgreSQL</span>
-                            </div>
-                            <a href="#" class="btn btn-sm btn-outline-primary">View Project</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-5">
-                <a href="#" class="btn btn-outline-primary">View All Projects</a>
+import (
+  models "alex_gorbunov_cv/internal/models"
+)
+
+templ ProjectsComponent(projects []*models.Project) {
+  <section class="projects-section py-5">
+    <div class="binary-bg"></div>
+    <div class="container">
+        <h2 class="section-heading text-center mb-3">Featured Projects</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center mb-5">
+                <p class="lead">Showcasing some of my best work across different domains</p>
             </div>
         </div>
-    </section>
+        
+        <div id="projectsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000" data-bs-touch="true">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                for i, _ := range projects {
+                    if i == 0 {
+                        <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="{i}" class="active" aria-current="true" aria-label="Project {i+1}"></button>
+                    } else {
+                        <button type="button" data-bs-target="#projectsCarousel" data-bs-slide-to="{i}" aria-label="Project {i+1}"></button>
+                    }
+                }
+            </div>
+
+            <div class="carousel-inner">
+                for i, project := range projects {
+                    if i == 0 {
+                        <div class="carousel-item active">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-10 col-lg-8">
+                                    <div class="card project-card h-100 border-0 shadow-sm">
+                                        <div class="card-img-wrapper">
+                                            <img src="{ project.Image }" class="card-img-top" alt="{ project.Title }">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold text-primary">{ project.Title }</h5>
+                                            <p class="card-text">{ project.Description }</p>
+                                            <div class="tech-stack d-flex flex-wrap mt-3 mb-3">
+                                                for _, item := range project.Techstack {
+                                                    <span class="badge bg-light text-dark me-2 mb-2 py-2 px-3">{ item }</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    } else {
+                        <div class="carousel-item">
+                            <div class="row g-4 justify-content-center">
+                                <div class="col-md-10 col-lg-8">
+                                    <div class="card project-card h-100 border-0 shadow-sm">
+                                        <div class="card-img-wrapper">
+                                            <img src="{ project.Image }" class="card-img-top" alt="{ project.Title }">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title fw-bold text-primary">{ project.Title }</h5>
+                                            <p class="card-text">{ project.Description }</p>
+                                            <div class="tech-stack d-flex flex-wrap mt-3 mb-3">
+                                                for _, item := range project.Techstack {
+                                                    <span class="badge bg-light text-dark me-2 mb-2 py-2 px-3">{ item }</span>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+
+            <!-- Navigation buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#projectsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bg-primary p-2 rounded-circle" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#projectsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon bg-primary p-2 rounded-circle" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Add custom CSS -->
+        <style>
+            .projects-section {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .binary-bg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0.05;
+                z-index: -1;
+            }
+            
+            .project-card {
+                transition: transform 0.3s ease;
+                overflow: hidden;
+            }
+            
+            .project-card:hover {
+                transform: translateY(-5px);
+            }
+            
+            .card-img-wrapper {
+                height: 220px;
+                overflow: hidden;
+            }
+            
+            .card-img-top {
+                height: 100%;
+                object-fit: cover;
+                transition: transform 0.5s ease;
+            }
+            
+            .project-card:hover .card-img-top {
+                transform: scale(1.05);
+            }
+            
+            .carousel-indicators {
+                bottom: -50px;
+            }
+            
+            .carousel-indicators button {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: #ccc;
+                opacity: 0.5;
+            }
+            
+            .carousel-indicators button.active {
+                background-color: var(--bs-primary);
+                opacity: 1;
+            }
+            
+            .carousel-control-prev, .carousel-control-next {
+                width: 5%;
+                opacity: 1;
+            }
+            
+            .tech-stack .badge {
+                font-weight: 500;
+                border-radius: 20px;
+            }
+            
+            @media (max-width: 767px) {
+                .card-img-wrapper {
+                    height: 180px;
+                }
+            }
+        </style>
+    </div>
+</section>
   }

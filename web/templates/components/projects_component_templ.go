@@ -8,7 +8,11 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func ProjectsComponent() templ.Component {
+import (
+	models "alex_gorbunov_cv/internal/models"
+)
+
+func ProjectsComponent(projects []*models.Project) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +33,139 @@ func ProjectsComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"py-5 py-md-7 bg-light\" id=\"projects\"><div class=\"binary-bg\"></div><div class=\"container\"><h2 class=\"section-heading text-center\">Featured Projects</h2><div class=\"row justify-content-center\"><div class=\"col-lg-8 text-center mb-5\"><p class=\"lead\">Showcasing some of my best work across different domains</p></div></div><div class=\"row g-4\"><div class=\"col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"/api/placeholder/400/300\" class=\"card-img-top\" alt=\"Project 1\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">AI-Powered Task Manager</h5><p class=\"card-text\">A Vue.js web application with LLM integration for smart task categorization and prioritization.</p><div class=\"d-flex flex-wrap mt-3 mb-3\"><span class=\"badge me-2 mb-2\">Vue.js</span> <span class=\"badge me-2 mb-2\">TypeScript</span> <span class=\"badge me-2 mb-2\">Python</span> <span class=\"badge me-2 mb-2\">LLM</span></div><a href=\"#\" class=\"btn btn-sm btn-outline-primary\">View Project</a></div></div></div><div class=\"col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"/api/placeholder/400/300\" class=\"card-img-top\" alt=\"Project 2\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">Cross-Platform Mobile Wallet</h5><p class=\"card-text\">A Flutter-based mobile application for secure financial transactions with biometric authentication.</p><div class=\"d-flex flex-wrap mt-3 mb-3\"><span class=\"badge me-2 mb-2\">Flutter</span> <span class=\"badge me-2 mb-2\">Dart</span> <span class=\"badge me-2 mb-2\">Go</span> <span class=\"badge me-2 mb-2\">Firebase</span></div><a href=\"#\" class=\"btn btn-sm btn-outline-primary\">View Project</a></div></div></div><div class=\"col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"/api/placeholder/400/300\" class=\"card-img-top\" alt=\"Project 3\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">Microservices API Platform</h5><p class=\"card-text\">A scalable backend infrastructure built with Go, supporting high-throughput data processing.</p><div class=\"d-flex flex-wrap mt-3 mb-3\"><span class=\"badge me-2 mb-2\">Go</span> <span class=\"badge me-2 mb-2\">Docker</span> <span class=\"badge me-2 mb-2\">Kubernetes</span> <span class=\"badge me-2 mb-2\">PostgreSQL</span></div><a href=\"#\" class=\"btn btn-sm btn-outline-primary\">View Project</a></div></div></div></div><div class=\"text-center mt-5\"><a href=\"#\" class=\"btn btn-outline-primary\">View All Projects</a></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"projects-section py-5\"><div class=\"binary-bg\"></div><div class=\"container\"><h2 class=\"section-heading text-center mb-3\">Featured Projects</h2><div class=\"row justify-content-center\"><div class=\"col-lg-8 text-center mb-5\"><p class=\"lead\">Showcasing some of my best work across different domains</p></div></div><div id=\"projectsCarousel\" class=\"carousel slide\" data-bs-ride=\"carousel\" data-bs-interval=\"5000\" data-bs-touch=\"true\"><!-- Indicators --><div class=\"carousel-indicators\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for i, _ := range projects {
+			if i == 0 {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<button type=\"button\" data-bs-target=\"#projectsCarousel\" data-bs-slide-to=\"{i}\" class=\"active\" aria-current=\"true\" aria-label=\"Project {i+1}\"></button>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			} else {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<button type=\"button\" data-bs-target=\"#projectsCarousel\" data-bs-slide-to=\"{i}\" aria-label=\"Project {i+1}\"></button>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</div><div class=\"carousel-inner\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for i, project := range projects {
+			if i == 0 {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<div class=\"carousel-item active\"><div class=\"row g-4 justify-content-center\"><div class=\"col-md-10 col-lg-8\"><div class=\"card project-card h-100 border-0 shadow-sm\"><div class=\"card-img-wrapper\"><img src=\"{ project.Image }\" class=\"card-img-top\" alt=\"{ project.Title }\"></div><div class=\"card-body\"><h5 class=\"card-title fw-bold text-primary\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var2 string
+				templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 41, Col: 103}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</h5><p class=\"card-text\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var3 string
+				templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 42, Col: 86}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</p><div class=\"tech-stack d-flex flex-wrap mt-3 mb-3\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				for _, item := range project.Techstack {
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "<span class=\"badge bg-light text-dark me-2 mb-2 py-2 px-3\">")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					var templ_7745c5c3_Var4 string
+					templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(item)
+					if templ_7745c5c3_Err != nil {
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 45, Col: 117}
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</span>")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</div></div></div></div></div></div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			} else {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "<div class=\"carousel-item\"><div class=\"row g-4 justify-content-center\"><div class=\"col-md-10 col-lg-8\"><div class=\"card project-card h-100 border-0 shadow-sm\"><div class=\"card-img-wrapper\"><img src=\"{ project.Image }\" class=\"card-img-top\" alt=\"{ project.Title }\"></div><div class=\"card-body\"><h5 class=\"card-title fw-bold text-primary\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var5 string
+				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 62, Col: 103}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</h5><p class=\"card-text\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var6 string
+				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 63, Col: 86}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</p><div class=\"tech-stack d-flex flex-wrap mt-3 mb-3\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				for _, item := range project.Techstack {
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 14, "<span class=\"badge bg-light text-dark me-2 mb-2 py-2 px-3\">")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					var templ_7745c5c3_Var7 string
+					templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(item)
+					if templ_7745c5c3_Err != nil {
+						return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 66, Col: 117}
+					}
+					_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+					templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 15, "</span>")
+					if templ_7745c5c3_Err != nil {
+						return templ_7745c5c3_Err
+					}
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 16, "</div></div></div></div></div></div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 17, "</div><!-- Navigation buttons --><button class=\"carousel-control-prev\" type=\"button\" data-bs-target=\"#projectsCarousel\" data-bs-slide=\"prev\"><span class=\"carousel-control-prev-icon bg-primary p-2 rounded-circle\" aria-hidden=\"true\"></span> <span class=\"visually-hidden\">Previous</span></button> <button class=\"carousel-control-next\" type=\"button\" data-bs-target=\"#projectsCarousel\" data-bs-slide=\"next\"><span class=\"carousel-control-next-icon bg-primary p-2 rounded-circle\" aria-hidden=\"true\"></span> <span class=\"visually-hidden\">Next</span></button></div><!-- Add custom CSS --><style>\n            .projects-section {\n                position: relative;\n                overflow: hidden;\n            }\n            \n            .binary-bg {\n                position: absolute;\n                top: 0;\n                left: 0;\n                width: 100%;\n                height: 100%;\n                opacity: 0.05;\n                z-index: -1;\n            }\n            \n            .project-card {\n                transition: transform 0.3s ease;\n                overflow: hidden;\n            }\n            \n            .project-card:hover {\n                transform: translateY(-5px);\n            }\n            \n            .card-img-wrapper {\n                height: 220px;\n                overflow: hidden;\n            }\n            \n            .card-img-top {\n                height: 100%;\n                object-fit: cover;\n                transition: transform 0.5s ease;\n            }\n            \n            .project-card:hover .card-img-top {\n                transform: scale(1.05);\n            }\n            \n            .carousel-indicators {\n                bottom: -50px;\n            }\n            \n            .carousel-indicators button {\n                width: 12px;\n                height: 12px;\n                border-radius: 50%;\n                background-color: #ccc;\n                opacity: 0.5;\n            }\n            \n            .carousel-indicators button.active {\n                background-color: var(--bs-primary);\n                opacity: 1;\n            }\n            \n            .carousel-control-prev, .carousel-control-next {\n                width: 5%;\n                opacity: 1;\n            }\n            \n            .tech-stack .badge {\n                font-weight: 500;\n                border-radius: 20px;\n            }\n            \n            @media (max-width: 767px) {\n                .card-img-wrapper {\n                    height: 180px;\n                }\n            }\n        </style></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

@@ -17,7 +17,13 @@ func Router(log *slog.Logger, storage store.Storage) http.Handler {
 	router.Use(mux.CORSMethodMiddleware(router))
 	router.Use(gorilla_handlers.RecoveryHandler())
 
-	router.Handle("/", handlers.MainPageHandler())
+	mainComponentHandler, err := handlers.MainPageHandler(log, &storage)
+	if err != nil {
+		log.Error(err.Error())
+		return nil
+	}
+
+	router.Handle("/", mainComponentHandler)
 	router.PathPrefix("/static/").Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("web/static"))))
 
 	return router
