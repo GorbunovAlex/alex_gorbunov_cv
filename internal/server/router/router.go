@@ -13,7 +13,6 @@ import (
 func Router(log *slog.Logger, storage store.Storage) http.Handler {
 	router := mux.NewRouter()
 
-	// router.Use(mLogger.New(log))
 	router.Use(mux.CORSMethodMiddleware(router))
 	router.Use(gorilla_handlers.RecoveryHandler())
 
