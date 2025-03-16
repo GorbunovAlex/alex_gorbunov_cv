@@ -4,3 +4,4 @@ Dockerfile
 config/*
 !config/example.yaml
 
+go.sum
