@@ -1,3 +1,6 @@
 compose-dev.yml
 Makefile
 Dockerfile
+config/*
+!config/example.yaml
+
