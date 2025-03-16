@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-	// TODO: Move to global? 3 invokations in app
 	cfg := config.MustLoad()
 
 	log := sl.SetupLogger(cfg.Env)
