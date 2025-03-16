@@ -11,7 +11,7 @@ import (
 type Config struct {
 	Env        string `yaml:"env" env-default:"dev"`
 	HTTPServer `yaml:"http_server"`
-	// Database   `yaml:"database"`
+	Database   `yaml:"database"`
 }
 
 type HTTPServer struct {
@@ -20,13 +20,13 @@ type HTTPServer struct {
 	IdleTimeout time.Duration `yaml:"idle_timeout" env-default:"60s"`
 }
 
-//type Database struct {
-//	Host     string `yaml:"host" env-required:"true"`
-//	Port     int    `yaml:"port" env-required:"true"`
-//	Name     string `yaml:"name" env-required:"true"`
-//	User     string `yaml:"user" env-required:"true"`
-//	Password string `yaml:"password" env-required:"true"`
-//}
+type Database struct {
+	ClientURI  string `yaml:"client_uri" env-required:"true"`
+	Database   string `yaml:"database" env-required:"true"`
+	Collection string `yaml:"collection" env-required:"true"`
+	User       string `yaml:"user" env-required:"true"`
+	Password   string `yaml:"password" env-required:"true"`
+}
 
 func MustLoad() *Config {
 	configPath := os.Getenv("CONFIG_PATH")

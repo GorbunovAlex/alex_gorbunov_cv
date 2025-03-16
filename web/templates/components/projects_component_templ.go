@@ -8,7 +8,11 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func ProjectsComponent() templ.Component {
+import (
+	models "alex_gorbunov_cv/internal/models"
+)
+
+func ProjectsComponent(projects []*models.Project) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +33,92 @@ func ProjectsComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"py-5 py-md-7 bg-light\" id=\"projects\"><div class=\"binary-bg\"></div><div class=\"container\"><h2 class=\"section-heading text-center\">Featured Projects</h2><div class=\"row justify-content-center\"><div class=\"col-lg-8 text-center mb-5\"><p class=\"lead\">Showcasing some of my best work across different domains</p></div></div><div class=\"row g-4\"><div class=\"col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"/api/placeholder/400/300\" class=\"card-img-top\" alt=\"Project 1\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">AI-Powered Task Manager</h5><p class=\"card-text\">A Vue.js web application with LLM integration for smart task categorization and prioritization.</p><div class=\"d-flex flex-wrap mt-3 mb-3\"><span class=\"badge me-2 mb-2\">Vue.js</span> <span class=\"badge me-2 mb-2\">TypeScript</span> <span class=\"badge me-2 mb-2\">Python</span> <span class=\"badge me-2 mb-2\">LLM</span></div><a href=\"#\" class=\"btn btn-sm btn-outline-primary\">View Project</a></div></div></div><div class=\"col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"/api/placeholder/400/300\" class=\"card-img-top\" alt=\"Project 2\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">Cross-Platform Mobile Wallet</h5><p class=\"card-text\">A Flutter-based mobile application for secure financial transactions with biometric authentication.</p><div class=\"d-flex flex-wrap mt-3 mb-3\"><span class=\"badge me-2 mb-2\">Flutter</span> <span class=\"badge me-2 mb-2\">Dart</span> <span class=\"badge me-2 mb-2\">Go</span> <span class=\"badge me-2 mb-2\">Firebase</span></div><a href=\"#\" class=\"btn btn-sm btn-outline-primary\">View Project</a></div></div></div><div class=\"col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"/api/placeholder/400/300\" class=\"card-img-top\" alt=\"Project 3\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">Microservices API Platform</h5><p class=\"card-text\">A scalable backend infrastructure built with Go, supporting high-throughput data processing.</p><div class=\"d-flex flex-wrap mt-3 mb-3\"><span class=\"badge me-2 mb-2\">Go</span> <span class=\"badge me-2 mb-2\">Docker</span> <span class=\"badge me-2 mb-2\">Kubernetes</span> <span class=\"badge me-2 mb-2\">PostgreSQL</span></div><a href=\"#\" class=\"btn btn-sm btn-outline-primary\">View Project</a></div></div></div></div><div class=\"text-center mt-5\"><a href=\"#\" class=\"btn btn-outline-primary\">View All Projects</a></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"py-5 py-md-7 bg-light\" id=\"projects\"><div class=\"binary-bg\"></div><div class=\"container\"><h2 class=\"section-heading text-center\">Featured Projects</h2><div class=\"projects-wrapper d-flex flex-row justify-content-between align-items-center\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, project := range projects {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"project-item col-md-6 col-lg-4\"><div class=\"card project-card h-100 border-0\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 string
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(project.Image)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 17, Col: 39}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\" class=\"card-img-top\" alt=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 17, Col: 82}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\"><div class=\"card-body\"><h5 class=\"card-title text-primary\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(project.Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 19, Col: 68}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</h5><p class=\"card-text\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 20, Col: 59}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p><div class=\"d-flex flex-wrap mt-3 mb-3\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, tag := range project.Techstack {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<span class=\"badge me-2 mb-2\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var6 string
+				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(tag)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/projects_component.templ`, Line: 23, Col: 56}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</div></div></div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "</div></div></section><style>\n    .project-item {\n      min-width: 300px;\n      height: 500px;\n    }\n\n    .projects-wrapper {\n      gap: 16px;\n    }\n\n    @media (max-width: 576px) {\n      .projects-wrapper {\n        flex-direction: column !important;\n      }\n    }\n  </style>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

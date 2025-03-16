@@ -5,60 +5,45 @@ templ ContactComponent() {
         <div class="binary-bg"></div>
         <div class="container">
             <h2 class="section-heading text-center">Contact Me</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center mb-5">
-                    <p class="lead">Get in touch to discuss your project or just to say hi!</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="card border-0 shadow-sm p-4">
-                        <h3 class="fs-5 mb-4">Contact Information</h3>
-                        <div class="contact-info mb-3">
+            <div class="container">
+                <div class="mb-4 mb-lg-0">
+                    <div class="d-flex flex-column justify-content-center align-items-center border-0 shadow-sm p-4">
+                        <div class="container d-flex flex-column align-items-center">
+                          <div class="contact-info mb-3">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>123 Tech Street, Innovation City, Country</span>
-                        </div>
-                        <div class="contact-info mb-3">
+                            <span>Berlin, Germany</span>
+                          </div>
+                          <div class="contact-info mb-3">
                             <i class="fas fa-envelope"></i>
-                            <span>john.doe@example.com</span>
+                            <span>alex.gorbunov.de@gmail.com</span>
+                          </div>
+                          <div class="contact-info mb-3">
+                            <i class="fa-brands fa-telegram"></i>
+                            <span>GorbunovAlexander</span>
+                          </div>
+                          <div class="contact-info mb-3">
+                            <i class="fa-brands fa-upwork"></i>
+                            <a href="https://www.upwork.com/freelancers/~016c5c40b491593844" target="_blank"><span>Upwork Top Rated</span></a>
+                          </div>
                         </div>
-                        <div class="contact-info mb-3">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>+123 456 7890</span>
+                        <div class="social-links d-flex row mt-4">
+                            <a href="https://github.com/GorbunovAlex" target="_blank" class="me-2"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/gorbunovalex/" target="_blank" class="me-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://x.com/al_gorbunov" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
                         </div>
-                        <div class="social-links mt-4">
-                            <a href="#" class="me-2"><i class="fab fa-github"></i></a>
-                            <a href="#" class="me-2"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm p-4">
-                        <h3 class="fs-5 mb-4">Send a Message</h3>
-                        <form>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="name" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="email" class="form-label">Email</label>
-                                <input type="email" class="form-control" id="email" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="subject" class="form-label">Subject</label>
-                                <input type="text" class="form-control" id="subject" required>
-                            </div>
-                            <div class="mb-3">
-                                <label for="message" class="form-label">Message</label>
-                                <textarea class="form-control" id="message" rows="4" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-  }
+    <style>
+      @media (max-width: 576px) {
+        .contact-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+    </style>
+}

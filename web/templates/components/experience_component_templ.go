@@ -8,7 +8,9 @@ package components
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
-func ExperienceComponent() templ.Component {
+import models "alex_gorbunov_cv/internal/models"
+
+func ExperienceComponent(experiences []*models.Experience) templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
 		if templ_7745c5c3_CtxErr := ctx.Err(); templ_7745c5c3_CtxErr != nil {
@@ -29,7 +31,69 @@ func ExperienceComponent() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"py-5 py-md-7 bg-dark\" id=\"experience\"><div class=\"binary-bg\"></div><div class=\"container\"><h2 class=\"section-heading text-center\">Work Experience</h2><div class=\"row justify-content-center\"><div class=\"col-lg-8 text-center mb-5\"><p class=\"lead\">Building solutions at innovative companies</p></div></div><div class=\"row\"><div class=\"col-lg-10 mx-auto\"><div class=\"card mb-4 border-0 shadow-sm\"><div class=\"card-body p-4\"><div class=\"d-flex justify-content-between flex-column flex-md-row\"><div><h4>Senior Software Engineer</h4><h5 class=\"text-primary\">TechInnovate Solutions</h5></div><div class=\"text-md-end\"><span class=\"badge mb-2\">2021 - Present</span></div></div><p class=\"mt-3\">Lead developer for enterprise-level applications with a focus on AI integration. Architected and implemented Vue.js frontends and Go microservices that process millions of requests daily.</p><ul><li>Developed a real-time analytics dashboard with Vue.js and WebSockets</li><li>Implemented LLM-powered search functionality that improved query accuracy by 35%</li><li>Optimized API endpoints resulting in 40% performance improvement</li></ul></div></div><div class=\"card mb-4 border-0 shadow-sm\"><div class=\"card-body p-4\"><div class=\"d-flex justify-content-between flex-column flex-md-row\"><div><h4>Full Stack Developer</h4><h5 class=\"text-primary\">MobileTech Inc.</h5></div><div class=\"text-md-end\"><span class=\"badge mb-2\">2018 - 2021</span></div></div><p class=\"mt-3\">Developed cross-platform mobile applications using Flutter and created backend services with Python. Worked on various client projects in fintech and e-commerce sectors.</p><ul><li>Built a Flutter-based mobile wallet app with biometric authentication</li><li>Designed and implemented RESTful APIs using Python Flask</li><li>Integrated third-party payment gateways into mobile applications</li></ul></div></div><div class=\"card border-0 shadow-sm\"><div class=\"card-body p-4\"><div class=\"d-flex justify-content-between flex-column flex-md-row\"><div><h4>Frontend Developer</h4><h5 class=\"text-primary\">WebSolutions Corp</h5></div><div class=\"text-md-end\"><span class=\"badge mb-2\">2016 - 2018</span></div></div><p class=\"mt-3\">Developed responsive web applications using JavaScript, HTML5, and CSS3. Focused on creating user-friendly interfaces and ensuring cross-browser compatibility.</p><ul><li>Created interactive dashboards using JavaScript and D3.js</li><li>Implemented responsive design principles for mobile-first applications</li><li>Collaborated with backend developers to integrate RESTful APIs</li></ul></div></div></div></div></div></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"py-5 py-md-7 bg-dark\" id=\"experience\"><div class=\"binary-bg\"></div><div class=\"container\"><h2 class=\"section-heading text-center\">Work Experience</h2><div class=\"row\"><div class=\"col-lg-10 mx-auto\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, experience := range experiences {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"card mb-4 border-0 shadow-sm\"><div class=\"card-body p-4\"><div class=\"d-flex justify-content-between flex-column flex-md-row\"><div><h4>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 string
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(experience.Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/experience_component.templ`, Line: 18, Col: 48}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</h4><h5 class=\"text-primary\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(experience.Company)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/experience_component.templ`, Line: 19, Col: 71}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "</h5></div><div class=\"text-md-end\"><span class=\"badge mb-2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(experience.Duration)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/experience_component.templ`, Line: 22, Col: 72}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</span></div></div><p class=\"mt-3\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(experience.Description)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `web/templates/components/experience_component.templ`, Line: 25, Col: 62}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p></div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</div></div></div></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

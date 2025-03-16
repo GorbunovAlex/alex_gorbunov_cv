@@ -3,3 +3,9 @@ http_server:
   address: ""
   timeout: 5s
   idle_timeout: 60s
+database:
+  client_uri: ""
+  database: ""
+  collection: ""
+  user: ""
+  password: ""
