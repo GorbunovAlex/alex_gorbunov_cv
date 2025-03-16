@@ -4,7 +4,7 @@ Hello, everyone! My name is Alex Gorbunov and this is my CV.
 
 ## TechStack
 
-Tech stack was chosen just to be as simple as possible. I'm fond of Go, that's why it uses it with a pinch of LLM generated HTML and CSS.
+Tech stack was chosen just to be as simple as possible. I'm fond of Go, that's why I've used it with a pinch of LLM generated HTML and CSS.
 
 ## The idea
 
