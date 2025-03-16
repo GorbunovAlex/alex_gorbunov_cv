@@ -347,9 +347,6 @@ templ MainPageComponent(experiences []*models.Experience, projects []*models.Pro
     <!-- About Section -->
     @components.AboutComponent()
 
-    <!-- Skills Section -->
-    // @components.SkillsComponent()
-
     if projects != nil {
        <!-- Projects Section -->
        @components.ProjectsComponent(projects)
