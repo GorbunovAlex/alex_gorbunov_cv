@@ -4,6 +4,7 @@ import (
 	"alex_gorbunov_cv/internal/config"
 	"context"
 	"fmt"
+	"log/slog"
 
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -18,7 +19,7 @@ type Storage struct {
 	collection *mongo.Collection
 }
 
-func NewStorage() (*Storage, error) {
+func NewStorage(log *slog.Logger) (*Storage, error) {
 	const fn = "storage.mongodb.NewStorage"
 
 	cfg := config.MustLoad()

@@ -13,4 +13,5 @@ type Experience struct {
 	Duration    string             `json:"duration" bson:"duration"`
 	Description string             `json:"description" bson:"description"`
 	Title       string             `json:"title" bson:"title"`
+	Company     string             `json:"company" bson:"company"`
 }

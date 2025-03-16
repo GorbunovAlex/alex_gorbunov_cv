@@ -18,7 +18,7 @@ func main() {
 
 	log.Info("starting server", slog.String("env", cfg.Env))
 
-	storage, err := storage.NewStorage()
+	storage, err := storage.NewStorage(log)
 	if err != nil {
 		log.Error("failed to init storage", sl.Error(err))
 		os.Exit(1)
