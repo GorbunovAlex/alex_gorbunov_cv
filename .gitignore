@@ -3,5 +3,7 @@ Makefile
 Dockerfile
 config/*
 !config/example.yaml
+web/*.go
+web/components/*.go
 
 go.sum
