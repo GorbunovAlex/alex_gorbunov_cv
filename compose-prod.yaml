@@ -10,4 +10,4 @@ services:
       - ./config:/cv/config
     environment:
       CONFIG_PATH: config/prod.yaml
-    comand: ["sh", "-c", "templ generate && go run cmd/main.go --env=.env"]
+    command: ["sh", "-c", "templ generate && go run cmd/main.go --env=.env"]
