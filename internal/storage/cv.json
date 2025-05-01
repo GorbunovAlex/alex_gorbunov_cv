@@ -1,0 +1,85 @@
+{
+  "experiences": [
+    {
+      "duration": "2024 - PRESENT",
+      "description": "Developing innovative solutions for scheduling steel production at steel plants using JavaScript/TypeScript, Vue.js, and Nuxt 3. Also contributing to backend development using C++ and Python.",
+      "title": "Frontend Software Engineer",
+      "company": "Smart Steel Technologies GmbH"
+    },
+    {
+      "duration": "2022 - 2024",
+      "description": "Worked on Flutter (Android/iOS) and Vue.js SPA. Led major upgrades and development processes, implemented MVVM architecture, built critical modules, and managed CI/CD pipelines using Docker. Also contributed to code reviews and conducted technical interviews.",
+      "title": "Frontend Developer",
+      "company": "NtechLab"
+    },
+    {
+      "duration": "Jan 2022 - Sep 2022",
+      "description": "Sole frontend developer responsible for building a SPA with Vue.js and Quasar Framework. Developed state management with Pinia, authentication, localization, and implemented a CI/CD pipeline. Also contributed to backend with Django and collaborated on API interfaces.",
+      "title": "Software Engineer",
+      "company": "Webware Internet Solutions GmbH"
+    },
+    {
+      "duration": "2021 - 2022",
+      "description": "Built applications using Vue.js, Nuxt, and Electron.js. Developed modules for payments, navigation, and custom UI components. Led migrations from Nuxt to Vue 3 and integrated TypeScript.",
+      "title": "Frontend Developer",
+      "company": "Lins-Intek"
+    },
+    {
+      "duration": "2019 - 2021",
+      "description": "Built personal and freelance frontend projects including e-commerce modules, games, and pet projects using Vue.js, JS/TS. Learned and practiced modern frontend development.",
+      "title": "Frontend Developer",
+      "company": "Freelance"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Benzigo app",
+      "description": "CRM for managing fuel orders for fuel stations",
+      "image": "static/benzigo.webp",
+      "techstack": [
+        "JavaScript",
+        "TypeScript",
+        "Vue.js",
+        "Vuetify",
+        "GitHub Actions",
+        "PHP",
+        "MariaDB"
+      ]
+    },
+    {
+      "title": "Waitlist for Cruise Maps",
+      "description": "Landing page with the form to subscribe to the waitlist of the product. Integration with 3d party CRM",
+      "image": "static/waitlist.webp",
+      "techstack": ["JavaScript", "TypeScript", "Nuxt", "Quasar", "PM2"]
+    },
+    {
+      "title": "MVP for an insurance company",
+      "description": "Fully-fledged project with LLM and Telegram Bot integration",
+      "image": "static/surveyor.webp",
+      "techstack": [
+        "JavaScript",
+        "TypeScript",
+        "Vue.js",
+        "Quasar",
+        "Go",
+        "PostgreSQL",
+        "Python",
+        "PM2"
+      ]
+    },
+    {
+      "title": "Cinemusic app",
+      "description": "Fully - fledge project with LLM integration, Flutter client, admin page, several internal helping tools",
+      "image": "static/cinemusic.webp",
+      "techstack": [
+        "Flutter",
+        "Go",
+        "Python",
+        "TypeScript",
+        "Vue.js",
+        "PostgreSQL",
+        "Docker"
+      ]
+    }
+  ]
+}
