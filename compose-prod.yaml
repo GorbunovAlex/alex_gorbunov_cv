@@ -9,7 +9,4 @@ services:
       - ./config:/cv/config
     environment:
       CONFIG_PATH: config/prod.yaml
-    depends_on:
-      mongodb:
-        condition: service_healthy
     command: ["sh", "-c", "templ generate && go run cmd/main.go --env=.env"]
