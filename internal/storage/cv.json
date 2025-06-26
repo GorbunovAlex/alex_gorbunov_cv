@@ -1,8 +1,14 @@
 {
   "experiences": [
     {
-      "duration": "2024 - PRESENT",
-      "description": "Developing innovative solutions for scheduling steel production at steel plants using JavaScript/TypeScript, Vue.js, and Nuxt 3. Also contributing to backend development using C++ and Python.",
+      "duration": "2025 - PRESENT",
+      "description": "Developing innovative solutions for scheduling steel production at steel plants using Python, C++ and TypeScript (with Nuxt)",
+      "title": "Software Engineer",
+      "company": "Smart Steel Technologies GmbH"
+    },
+    {
+      "duration": "2024 - 2025",
+      "description": "Creating innovative solutions for optimizing steel production scheduling using JavaScript/TypeScript with Vue.js and Nuxt 3, while also contributing to backend development in C++ and Python.",
       "title": "Frontend Software Engineer",
       "company": "Smart Steel Technologies GmbH"
     },

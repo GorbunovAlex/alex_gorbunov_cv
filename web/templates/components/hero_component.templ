@@ -24,13 +24,16 @@ templ HeroComponent() {
                     </div>
                     <div class="hero-buttons mt-5">
                         <a href="#contact" class="btn btn-primary me-3 px-4 py-2">Hire Me</a>
-                        <a href="#projects" class="btn btn-outline-dark px-4 py-2">View Projects</a>
+                        <a href="#projects" class="btn btn-outline-primary px-4 py-2">View Projects</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <style>
+      .hero-tech-pills {
+            justify-content: center;
+          }
       @media (max-width: 500px) {
           .hero-section {
             height: calc(100dvh + 190px)
@@ -39,10 +42,6 @@ templ HeroComponent() {
           .hero-content {
             text-align: center;
             margin-top: 40px;
-          }
-
-          .hero-tech-pills {
-            justify-content: center;
           }
 
           .hero-buttons {

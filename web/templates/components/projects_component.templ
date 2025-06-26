@@ -13,7 +13,7 @@ templ ProjectsComponent(projects []*models.Project) {
       <div class="projects-wrapper">
         for _, project := range projects {
           <div class="col">
-            <div class="card project-card h-100 border-0">
+            <div class="card project-item border-0">
               <img src={ project.Image } class="card-img-top" alt={ project.Title }>
               <div class="card-body">
                 <h5 class="card-title text-primary">{ project.Title }</h5>
@@ -34,7 +34,7 @@ templ ProjectsComponent(projects []*models.Project) {
   <style>
     .project-item {
       min-width: 300px;
-      height: 500px;
+      height: 400px;
     }
 
     .projects-wrapper {
