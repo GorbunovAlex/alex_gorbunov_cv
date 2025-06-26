@@ -1,6 +1,6 @@
 config/*
 !config/example.yaml
 web/*.go
-web/components/*.go
+web/templates/components/*.go
 
 go.sum
